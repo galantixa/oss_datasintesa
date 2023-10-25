@@ -7,17 +7,17 @@ sudo mkdir -p /opt/oss/bin
 sudo cp ~/oss_datasintesa/bin/* /opt/oss/bin/
 
 # define start function
-echo 'bin/start() {
+echo 'start() {
     /opt/oss/bin/start "$@"
 }' >> ~/.bashrc
 
 # define stop function
-echo 'bin/stop() {
+echo 'stop() {
     /opt/oss/bin/stop "$@"
 }' >> ~/.bashrc
 
 # define backup function
-echo '/bin/backup() {
+echo 'backup() {
     /opt/oss/bin/backup "$@"
 }' >> ~/.bashrc
 
