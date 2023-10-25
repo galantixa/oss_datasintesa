@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
-  ossDatabase:
+  oss_database:
     image: bitnami/postgres:latest
-    container_name: osspostgres
+    container_name: oss_postgres
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: galantixa
@@ -14,33 +14,33 @@ services:
       - ossnetwork
     ports:
       - "5432:5432"
-    restart: unless-stopped
+    restart: always
 
-  ossNginx:
+  oss_nginx:
     build:
       context: ./nginx
       dockerfile: dockerfile
-    container_name: nginxoss
+    container_name: nginx_oss
     ports:
       - "80:80"
     volumes:
       - "./nginx/nginx.conf:/etc/nginx/sites-enabled"
     depends_on:
-      - ossExpress
-    restart: unless-stopped
+      - oss_express
+    restart: always
     networks:
       - ossnetwork
 
-  ossExpress:
+  oss_express:
     build:
       context: ./express
       dockerfile: dockerfile
-    container_name: ossexpress
+    container_name: oss_express
     ports:
       - "5000:5000"
     depends_on:
-      - ossDatabase
-    restart: unless-stopped
+      - oss_database
+    restart: always
     networks:
       - ossnetwork
 
