@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   oss_database:
-    image: bitnami/postgres:latest
+    image: bitnami/postgresql:latest
     container_name: oss_postgres
     environment:
       POSTGRES_PASSWORD: postgres
