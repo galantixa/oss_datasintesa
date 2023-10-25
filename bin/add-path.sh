@@ -5,7 +5,7 @@ sudo mkdir -p /opt/oss/bin
 
 # move file from folder oss_datasintes/bin to /opt/oss/bin/
 
-sudo mv ~/oss_datasintesa/bin/* /opt/oss/bin/
+sudo cp ~/oss_datasintesa/bin/* /opt/oss/bin/
 
 # define start function
 echo 'start() {
