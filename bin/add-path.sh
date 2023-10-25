@@ -4,7 +4,6 @@
 sudo mkdir -p /opt/oss/bin
 
 # move file from folder oss_datasintes/bin to /opt/oss/bin/
-
 sudo cp ~/oss_datasintesa/bin/* /opt/oss/bin/
 
 # define start function
@@ -12,13 +11,13 @@ echo 'start() {
     /opt/oss/bin/start "$@"
 }' >> ~/.bashrc
 
-# define stop funtion
-echo 'start() {
+# define stop function
+echo 'stop() {
     /opt/oss/bin/stop "$@"
 }' >> ~/.bashrc
 
 # define backup function
-echo 'start() {
+echo 'backup() {
     /opt/oss/bin/backup "$@"
 }' >> ~/.bashrc
 
