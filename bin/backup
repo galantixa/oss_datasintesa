@@ -1,25 +1,23 @@
 #!/bin/bash
 
 BACKUP_DIR="/opt/oss/data/backups"
-
-# Create the backup directory if it doesn't exist and set the correct ownership
-sudo mkdir -p $BACKUP_DIR
-sudo chown -R galantixa $BACKUP_DIR
-# sudo chown -R $(whoami) $BACKUP_DIR
-# Get the current timestamP
-TIMESTAMP=$(date +%Y%m%d%H%M%S)
-
-# PostgreSQL database credentials
-DB_USER="galantixa"
+DB_USER="postgres"
 DB_PASSWORD="postgres"
 DB_NAME="postgres"
 
-# Dump the PostgreSQL database to a .sql file using Docker exec
-sudo docker exec oss_postgres pg_dump -U $DB_USER -d $DB_NAME > $BACKUP_DIR/$DB_NAME-$TIMESTAMP.sql
+# Create the backup dir
+sudo mkdir -p $BACKUP_DIR
+sudo chown -R galantixa $BACKUP_DIR
 
-# Check if the dump was successful
+# Get the current timestamp
+TIMESTAMP=$(date +%Y%m%d%H%M%S)
+
+# Backup 
+sudo docker exec -it oss_postgres pg_dump -U $DB_USER -d $DB_NAME > $BACKUP_DIR/$DB_NAME-$TIMESTAMP.sql
+
+# Check 
 if [ $? -eq 0 ]; then
-    echo "PostgreSQL backup created successfully: $BACKUP_DIR/$DB_NAME-$TIMESTAMP.sql"
+    echo "PostgreSQL backups created successfully: $BACKUP_DIR/$DB_NAME-$TIMESTAMP.sql"
 else
-    echo "Error: Failed to create PostgreSQL backup."
+    echo "Error: Failed to create PostgreSQL backups."
 fi

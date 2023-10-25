@@ -2,11 +2,11 @@ version: "3.8"
 
 services:
   oss_database:
-    image: bitnami/postgresql:latest
+    image: postgres:latest
     container_name: oss_postgres
     environment:
       POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: galantixa
+      POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     volumes:
       - "oss_postgresql_data:/var/lib/postgresql/data"
