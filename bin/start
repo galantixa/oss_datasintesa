@@ -1,0 +1,8 @@
+#!bin/bash
+
+# cd dir to oss_datasintesa
+cd /oss_datasintesa
+# start
+docker compose up -d
+# output
+echo "Start succed!"

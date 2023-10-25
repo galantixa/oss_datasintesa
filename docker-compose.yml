@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+  ossDatabase:
+    image: "postgres:12"
+    container_name: oss_postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: galantixa
+      POSTGRES_DB: postgres
+    volumes:
+      - "./data/postgresql:/var/lib/postgresql/data"
+    networks:
+      - ossNetwork
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  ossNginx:
+    build:
+      context: /nginx
+      dockerfile: Dockerfile
+    container_name: nginxOss
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/sites-enabled"
+    depends_on:
+      - ossExpress
+    restart: unless-stopped
+    networks:
+      - ossNetwork
+
+  ossExpress:
+    build:
+      context: ./express
+      dockerfile: Dockerfile
+    container_name: ossExpress
+    ports:
+      - "5000:5000"
+    depends_on:
+      - ossDatabase
+    restart: unless-stopped
+    networks:
+      - ossNetwork
+
+networks:
+  ossNetwork:

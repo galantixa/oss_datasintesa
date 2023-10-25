@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Change dir to oss_datasintesa
+cd ~/oss_datasintesa
+
+docker compose down
+
+echo "stop succed!"
