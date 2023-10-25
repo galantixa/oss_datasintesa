@@ -21,6 +21,7 @@ echo 'backup() {
     /opt/oss/bin/backup "$@"
 }' >> ~/.bashrc
 
+echo 'export PATH=$PATH:/opt/oss/bin' >> ~/.bashrc
 # apply changes
 source ~/.bashrc
 
