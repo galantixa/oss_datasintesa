@@ -2,14 +2,14 @@ version: "3.8"
 
 services:
   ossDatabase:
-    image: postgres:latest
+    image: bitnami/postgres:latest
     container_name: osspostgres
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: galantixa
       POSTGRES_DB: postgres
     volumes:
-      - "./data/postgresql:/var/lib/postgresql/data"
+      - "oss_postgresql_data:/var/lib/postgresql/data"
     networks:
       - ossnetwork
     ports:
@@ -18,7 +18,7 @@ services:
 
   ossNginx:
     build:
-      context: /nginx
+      context: ./nginx
       dockerfile: dockerfile
     container_name: nginxoss
     ports:
@@ -46,3 +46,7 @@ services:
 
 networks:
   ossnetwork:
+    driver: bridge
+
+volumes:
+  oss_postgresql_data:
