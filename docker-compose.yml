@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  oss_database:
+  ossDatabase:
     image: postgres:latest
     container_name: osspostgres
     environment:
@@ -16,7 +16,7 @@ services:
       - "5432:5432"
     restart: unless-stopped
 
-  oss_nginx:
+  ossNginx:
     build:
       context: /nginx
       dockerfile: dockerfile
@@ -26,12 +26,12 @@ services:
     volumes:
       - "./nginx/nginx.conf:/etc/nginx/sites-enabled"
     depends_on:
-      - ossexpress
+      - ossExpress
     restart: unless-stopped
     networks:
       - ossnetwork
 
-  oss_express:
+  ossExpress:
     build:
       context: ./express
       dockerfile: dockerfile
