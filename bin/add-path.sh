@@ -8,11 +8,20 @@ sudo mkdir -p /opt/oss/bin
 sudo mv ~/oss_datasintesa/bin/* /opt/oss/bin/
 
 # define start function
-echo 'start() { /opt/oss/bin/start "$@"; }' >> ~/.bashrc
+echo 'start() {
+    /opt/oss/bin/start "$@"
+}' >> ~/.bashrc
+
 # define stop funtion
-echo 'stop() { /opt/oss/bin/stop "$@"; }' >> ~/.bashrc
+echo 'start() {
+    /opt/oss/bin/stop "$@"
+}' >> ~/.bashrc
+
 # define backup function
-echo 'backup() { /opt/oss/bin/backup "$@"; }' >> ~/.bashrc
+echo 'start() {
+    /opt/oss/bin/backup "$@"
+}' >> ~/.bashrc
+
 # apply changes
 exec bash
 

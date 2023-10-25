@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 BACKUP_DIR="/opt/oss/data/backups"
