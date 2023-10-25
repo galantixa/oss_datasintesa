@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   oss_database:
-    image: "postgres:latest"
+    image: postgres:latest
     container_name: osspostgres
     environment:
       POSTGRES_PASSWORD: postgres
@@ -19,7 +19,7 @@ services:
   oss_nginx:
     build:
       context: /nginx
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     container_name: nginxoss
     ports:
       - "80:80"
