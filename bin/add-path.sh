@@ -23,7 +23,7 @@ echo 'start() {
 }' >> ~/.bashrc
 
 # apply changes
-exec bash
+source ~/.bashrc
 
 # output
 echo "Setup Completed"
